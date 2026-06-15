@@ -1,14 +1,53 @@
-name: Matrix Example
+name: Artifact Demo
 
-on: push
+on:
+  push:
 
 jobs:
-  test:
+
+  create-file:
+
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node: [16, 18, 20]
+    steps:
+
+    - name: Create HTML file
+
+      run: |
+
+        mkdir website
+
+        echo "<h1>Welcome to Cloud TechNet</h1>" > website/index.html
+
+    - name: Upload Artifact
+
+      uses: actions/upload-artifact@v4
+
+      with:
+
+        name: website-files
+
+        path: website/
+
+
+  use-file:
+
+    needs: create-file
+
+    runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Testing Node ${{ matrix.node }}"
+
+    - name: Download Artifact
+
+      uses: actions/download-artifact@v4
+
+      with:
+
+        name: website-files
+
+        path: website
+
+    - name: Display file
+
+      run: cat website/index.html
