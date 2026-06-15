@@ -4,7 +4,7 @@ on: push
 
 jobs:
   demo:
-    runs-on: windows-latest-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout Repository
