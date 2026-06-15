@@ -1,14 +1,14 @@
-name: Runner Info
+name: Matrix Example
 
 on: push
 
 jobs:
-  info:
+  test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node: [16, 18, 20]
+
     steps:
-      - name: Display Runner Info
-        run: |
-          echo "OS: $RUNNER_OS"
-          echo "Architecture: $RUNNER_ARCH"
-          echo "Temp Directory: $RUNNER_TEMP"
+      - run: echo "Testing Node ${{ matrix.node }}"
