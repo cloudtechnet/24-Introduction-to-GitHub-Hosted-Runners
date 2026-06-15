@@ -1,0 +1,14 @@
+name: Hosted Runner Example
+
+on: push
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Message
+        run: echo "Running on GitHub Hosted Runner"
