@@ -1,22 +1,14 @@
-name: Multi OS Testing
+name: Runner Info
 
 on: push
 
 jobs:
-  linux-job:
+  info:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Running on Linux"
-
-  windows-job:
-    runs-on: windows-latest
-
-    steps:
-      - run: echo "Running on Windows"
-
-  mac-job:
-    runs-on: macos-latest
-
-    steps:
-      - run: echo "Running on macOS"
+      - name: Display Runner Info
+        run: |
+          echo "OS: $RUNNER_OS"
+          echo "Architecture: $RUNNER_ARCH"
+          echo "Temp Directory: $RUNNER_TEMP"
